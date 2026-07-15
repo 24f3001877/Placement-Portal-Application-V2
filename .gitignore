@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.db
+instance/
+backend/uploads/*
+!backend/uploads/.gitkeep
+celerybeat-schedule
+.env
+node_modules/
+celerybeat-schedule*
