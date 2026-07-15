@@ -43,7 +43,6 @@ RecruitRadar/              ← run everything from here
 ### Step 1 — Create and activate virtual environment
 
 ```bash
-cd RecruitRadar
 python -m venv venv
 
 # Windows (VSCode terminal):

@@ -1,6 +1,6 @@
 # RecruitRadar — cache.py
 # Redis caching helpers. All keys use the "rr_cache" prefix.
-# Import redis_client from extensions after app initialization.
+
 
 import json
 import functools

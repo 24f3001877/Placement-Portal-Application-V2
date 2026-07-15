@@ -31,7 +31,7 @@ def make_celery(app):
     return celery
 
 
-# ── celery instance (configured properly in celery_worker.py) ─────────────────
+# ── celery instance (configured properly in celery_worker.py) 
 # Imported and used in route files that trigger tasks
 celery_app: Celery | None = None
 
@@ -41,10 +41,10 @@ def get_celery():
     return celery_app
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # TASK 1 — Daily Deadline Reminder (Scheduled)
 # rr_task_send_deadline_reminders
-# ─────────────────────────────────────────────────────────────────────────────
+
 def rr_task_send_deadline_reminders():
     """
     Scheduled daily task.
@@ -113,10 +113,10 @@ def rr_task_send_deadline_reminders():
     return {"status": "done", "emails_sent": sent_count}
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # TASK 2 — Monthly Placement Report (Scheduled, 1st of month)
 # rr_task_send_monthly_report
-# ─────────────────────────────────────────────────────────────────────────────
+
 def rr_task_send_monthly_report():
     """
     Runs daily but only executes the actual report on the 1st of each month.
@@ -197,12 +197,10 @@ def rr_task_send_monthly_report():
         return {"status": "failed", "error": str(e)}
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # TASK 3 — User-Triggered CSV Export (Async)
 # rr_task_export_applications_csv
-# CHANGED: the CSV file is now attached directly to the completion email,
-# instead of only telling the user to log in and download it from the dashboard.
-# ─────────────────────────────────────────────────────────────────────────────
+
 def rr_task_export_applications_csv(export_job_id: int, user_id: int, role: str):
     """
     Async task triggered by student or company from their dashboard.
@@ -315,10 +313,10 @@ def rr_task_export_applications_csv(export_job_id: int, user_id: int, role: str)
         return {"status": "failed", "error": str(e)}
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # TASK 4 — Company-Triggered Interview Reminder (Async)
 # rr_task_send_interview_reminder
-# ─────────────────────────────────────────────────────────────────────────────
+
 def rr_task_send_interview_reminder(application_id: int):
     """
     Triggered by a company from the Applications page for a specific candidate

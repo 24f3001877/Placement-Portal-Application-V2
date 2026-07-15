@@ -63,4 +63,5 @@ router.beforeEach((to, from, next) => {
 })
 
 // Expose router on window so api.js interceptor can redirect on 401
+
 window.__rrRouter__ = router

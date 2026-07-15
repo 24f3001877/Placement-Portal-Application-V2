@@ -1,5 +1,5 @@
 // RecruitRadar — pages/CompanyApplications.js
-// Company views applications for a specific drive, updates status, schedules interviews.
+
 const CompanyApplications = {
   name: 'CompanyApplications',
   template: `

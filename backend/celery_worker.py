@@ -1,12 +1,9 @@
 # RecruitRadar — backend/celery_worker.py
 # Celery worker entry point.
-#
+
 # app.py lives at the project ROOT, not in backend/.
-# So we add the root to sys.path before importing it.
-#
-# Commands (run from RecruitRadar/ root):
-#   Worker : celery -A backend.celery_worker.celery worker --loglevel=info
-#   Beat   : celery -A backend.celery_worker.celery beat   --loglevel=info
+# So added the root to sys.path before importing it.
+
 
 import os
 import sys
@@ -31,6 +28,7 @@ celery = make_celery(flask_app)
 
 # Register all three rr_task functions as named Celery tasks
 # The name must match exactly what config.py CELERYBEAT_SCHEDULE refers to
+
 celery.task(name="tasks.rr_task_send_deadline_reminders")(rr_task_send_deadline_reminders)
 celery.task(name="tasks.rr_task_send_monthly_report")(rr_task_send_monthly_report)
 celery.task(name="tasks.rr_task_export_applications_csv")(rr_task_export_applications_csv)

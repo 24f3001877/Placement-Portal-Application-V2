@@ -1,4 +1,5 @@
 // RecruitRadar — pages/AdminCompanies.js
+
 const AdminCompanies = {
   name: 'AdminCompanies',
   template: `

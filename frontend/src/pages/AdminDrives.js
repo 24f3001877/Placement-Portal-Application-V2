@@ -1,6 +1,5 @@
 // RecruitRadar — pages/AdminDrives.js
-// Admin view of all placement drives with approve/reject/delete actions.
-// Also shows all applications view when route is /admin/applications.
+
 const AdminDrives = {
   name: 'AdminDrives',
   template: `
@@ -65,7 +64,7 @@ const AdminDrives = {
   }
 }
 
-// Admin — All Applications page (reuses same route file for simplicity)
+// Admin — All Applications page 
 const AdminApplications = {
   name: 'AdminApplications',
   template: `

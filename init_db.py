@@ -32,7 +32,7 @@ def init_db():
     with app.app_context():
         print("RecruitRadar — Initialising database...")
 
-        # Create all tables from SQLAlchemy models (programmatic — never manual)
+        # Create all tables from SQLAlchemy models 
         db.create_all()
         print("  ✓ All tables created successfully.")
 

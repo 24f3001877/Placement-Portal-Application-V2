@@ -1,5 +1,5 @@
 // RecruitRadar — pages/CompanyDrives.js
-// Company manages their drives and creates new ones.
+
 const CompanyDrives = {
   name: 'CompanyDrives',
   template: `

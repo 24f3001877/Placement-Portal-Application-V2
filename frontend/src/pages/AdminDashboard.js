@@ -1,4 +1,5 @@
 // RecruitRadar — pages/AdminDashboard.js
+
 const AdminDashboard = {
   name: 'AdminDashboard',
   template: `

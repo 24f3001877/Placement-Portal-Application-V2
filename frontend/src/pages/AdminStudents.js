@@ -1,4 +1,5 @@
 // RecruitRadar — pages/AdminStudents.js
+
 const AdminStudents = {
   name: 'AdminStudents',
   template: `

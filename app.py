@@ -1,19 +1,9 @@
-# RecruitRadar — app.py
-# Main Flask application file — lives at the project ROOT (RecruitRadar/).
-#
-# Run the app  :  python app.py
-# Init the DB  :  python init_db.py   (run once before first launch)
-#
-# Since this file is at the root, Flask naturally finds:
-#   frontend/   as the template and static folder (no ../  paths needed)
-#   backend/    as the package containing models, routes, config, etc.
+
 
 import os
 import sys
 
-# ── Add backend/ to Python path so imports like "from models import ..." work ─
-# This is needed because models.py, config.py, etc. live in backend/
-# but app.py is now one level above them at the root.
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "backend"))
 
 from flask import Flask, jsonify, render_template
@@ -34,20 +24,20 @@ def create_app(config_name: str = "development") -> Flask:
         static_url_path="/static",
     )
 
-    # ── Load config ───────────────────────────────────────────────────────────
+    # ── Load config 
     cfg = config_map.get(config_name, config_map["default"])
     app.config.from_object(cfg)
 
     # Ensure uploads folder exists (inside backend/uploads/)
     os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
-    # ── Initialize Flask extensions ───────────────────────────────────────────
+    # ── Initialize Flask extensions 
     db.init_app(app)
     jwt.init_app(app)
     mail.init_app(app)
     cors.init_app(app, resources={r"/api/*": {"origins": "*"}})
 
-    # ── Initialize Redis client ───────────────────────────────────────────────
+    # ── Initialize Redis client
     import redis as redis_lib
     import extensions as ext_module
     try:

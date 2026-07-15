@@ -7,9 +7,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from extensions import db
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # USER MODEL  (unified model for all roles)
-# ─────────────────────────────────────────────────────────────────────────────
+
 class User(db.Model):
     """
     Unified user model for Admin, Company, and Student roles.
@@ -53,9 +53,9 @@ class User(db.Model):
         }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # STUDENT PROFILE
-# ─────────────────────────────────────────────────────────────────────────────
+
 class StudentProfile(db.Model):
     """
     Extended profile for students.
@@ -103,9 +103,9 @@ class StudentProfile(db.Model):
         }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # COMPANY PROFILE
-# ─────────────────────────────────────────────────────────────────────────────
+
 class CompanyProfile(db.Model):
     """
     Extended profile for companies.
@@ -153,9 +153,9 @@ class CompanyProfile(db.Model):
         }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # PLACEMENT DRIVE (Job Position)
-# ─────────────────────────────────────────────────────────────────────────────
+
 class PlacementDrive(db.Model):
     """
     A recruitment event / job posting created by a Company.
@@ -215,9 +215,9 @@ class PlacementDrive(db.Model):
         return data
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # APPLICATION
-# ─────────────────────────────────────────────────────────────────────────────
+
 class Application(db.Model):
     """
     Records a student applying to a PlacementDrive.
@@ -267,9 +267,9 @@ class Application(db.Model):
         }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # PLACEMENT (confirmed placement record)
-# ─────────────────────────────────────────────────────────────────────────────
+
 class Placement(db.Model):
     """
     Created when a student is officially placed (status='placed' on Application).
@@ -314,9 +314,9 @@ class Placement(db.Model):
         }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # EXPORT JOB (tracks async CSV export tasks)
-# ─────────────────────────────────────────────────────────────────────────────
+
 class ExportJob(db.Model):
     """
     Tracks user-triggered CSV export batch jobs.

@@ -1,4 +1,5 @@
 // RecruitRadar — components/AlertMsg.js
+
 const AlertMsg = {
   name: 'AlertMsg',
   template: `

@@ -1,5 +1,5 @@
 // RecruitRadar — pages/LoginPage.js
-// Unified login + register page with Bootstrap tabs.
+
 // Tab 1: Login (all roles), Tab 2: Student Register, Tab 3: Company Register.
 
 const LoginPage = {

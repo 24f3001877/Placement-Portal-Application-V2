@@ -1,4 +1,5 @@
 // RecruitRadar — pages/CompanyDashboard.js
+
 const CompanyDashboard = {
   name: 'CompanyDashboard',
   template: `

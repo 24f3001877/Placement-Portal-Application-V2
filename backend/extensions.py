@@ -9,18 +9,18 @@ from flask_mail import Mail
 from flask_cors import CORS
 import redis as redis_lib
 
-# ── SQLAlchemy ORM ────────────────────────────────────────────────────────────
+# ── SQLAlchemy ORM 
 db = SQLAlchemy()
 
-# ── JWT Authentication ────────────────────────────────────────────────────────
+# ── JWT Authentication 
 jwt = JWTManager()
 
-# ── Mail ──────────────────────────────────────────────────────────────────────
+# ── Mail 
 mail = Mail()
 
-# ── CORS (allows Vue CDN frontend to call Flask API) ─────────────────────────
+# ── CORS (allows Vue CDN frontend to call Flask API) 
 cors = CORS()
 
-# ── Redis client (rr_cache prefix used for all keys) ─────────────────────────
+# ── Redis client (rr_cache prefix used for all keys) 
 # Initialized lazily in app.py after config is loaded
 redis_client: redis_lib.Redis | None = None

@@ -31,7 +31,7 @@ app.use(router)
 app.component('NavBar', NavBar)
 app.component('AlertMsg', AlertMsg)
 
-// ── Make rrStore and helpers available in ALL component templates 
+// Make rrStore and helpers available in ALL component templates 
 // Without this, templates can't access plain global JS variables.
 app.config.globalProperties.rrStore = rrStore
 app.config.globalProperties.rrShowAlert = rrShowAlert

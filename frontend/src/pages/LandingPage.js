@@ -1,6 +1,6 @@
 // RecruitRadar — pages/LandingPage.js
 // Public landing page — shows portal stats without requiring login.
-// Satisfies the optional milestone: "Public Landing Dashboard Page".
+
 
 const LandingPage = {
   name: 'LandingPage',

@@ -1,11 +1,49 @@
+# Virtual Environment
 venv/
-__pycache__/
+.venv/
+env/
+ENV/
+
+# Python cache
 *.pyc
-*.db
+__pycache__/
+*.pyo
+*.pyd
+*.so
+.Python
+
+# Database files
 instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# Celery Beat runtime files
+celerybeat-schedule*
+
+# User uploaded files (resumes, PDFs, CSV exports, offer letters)
 backend/uploads/*
 !backend/uploads/.gitkeep
-celerybeat-schedule
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment variables
 .env
-node_modules/
-celerybeat-schedule*
+.env.local
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.bak 

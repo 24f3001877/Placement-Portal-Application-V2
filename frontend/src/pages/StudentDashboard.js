@@ -1,5 +1,5 @@
 // RecruitRadar — pages/StudentDashboard.js
-// Student home: shows approved drives with search/filter + apply button.
+
 const StudentDashboard = {
   name: 'StudentDashboard',
   template: `

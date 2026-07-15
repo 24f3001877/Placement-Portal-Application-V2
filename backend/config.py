@@ -9,11 +9,11 @@ from datetime import timedelta
 class Config:
     """Base configuration shared across all environments."""
 
-    # ── Core Flask ────────────────────────────────────────────────────────────
+    # ── Core Flask
     SECRET_KEY = os.environ.get("RR_SECRET_KEY", "rr-dev-secret-fallback")
     DEBUG = False
 
-    # ── Database ──────────────────────────────────────────────────────────────
+    # ── Database 
     # BASE_DIR points to backend/ — database file lives there
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     SQLALCHEMY_DATABASE_URI = (
@@ -22,7 +22,7 @@ class Config:
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    # ── JWT ───────────────────────────────────────────────────────────────────
+    # ── JWT 
     JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "rr-jwt-secret-fallback")
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=8)
     # Client stores token under the key "rr_token"
@@ -30,10 +30,10 @@ class Config:
     JWT_HEADER_NAME = "Authorization"
     JWT_HEADER_TYPE = "Bearer"
 
-    # ── Redis ─────────────────────────────────────────────────────────────────
+    # ── Redis 
     REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
 
-    # ── Mail — Mailpit (local email testing) ──────────────────────────────────
+    # ── Mail — Mailpit (local email testing) 
     # Mailpit catches all outgoing emails and shows them at http://localhost:8025
     # No real email is sent — perfect for local demo and viva.
     # Install: https://github.com/axllent/mailpit/releases
@@ -48,14 +48,14 @@ class Config:
     MAIL_DEFAULT_SENDER  = ("RecruitRadar", "noreply@recruitradar.local")
     ADMIN_EMAIL          = os.environ.get("ADMIN_EMAIL", "admin@recruitradar.local")
 
-    # ── File Uploads ──────────────────────────────────────────────────────────
+    # ── File Uploads 
     # uploads/ folder lives inside backend/ — path stays consistent regardless
     # of where app.py is located, because BASE_DIR always points to backend/
     UPLOAD_FOLDER       = os.path.join(BASE_DIR, "uploads")
     MAX_CONTENT_LENGTH  = 5 * 1024 * 1024   # 5 MB max for resume PDFs
     ALLOWED_EXTENSIONS  = {"pdf"}
 
-    # ── Celery ────────────────────────────────────────────────────────────────
+    # ── Celery 
     CELERY_BROKER_URL       = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
     CELERY_RESULT_BACKEND   = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
     # rr_task prefix on all task names — visible in Celery worker logs
@@ -78,11 +78,11 @@ class Config:
         },
     }
 
-    # ── Admin seed credentials (used by init_db.py) ───────────────────────────
+    # ── Admin seed credentials (used by init_db.py) 
     ADMIN_EMAIL_SEED    = os.environ.get("ADMIN_EMAIL_SEED", "admin@recruitradar.com")
     ADMIN_PASSWORD_SEED = os.environ.get("ADMIN_PASSWORD_SEED", "Admin@1234")
 
-    # ── Redis cache TTLs (seconds) — all keys use rr_cache: prefix ────────────
+    # ── Redis cache TTLs (seconds) — all keys use rr_cache: prefix 
     RR_CACHE_TTL_DASHBOARD   = 300   # 5 min  — admin stats
     RR_CACHE_TTL_DRIVES      = 120   # 2 min  — approved drives list
     RR_CACHE_TTL_COMPANY_DASH = 180  # 3 min  — company dashboard

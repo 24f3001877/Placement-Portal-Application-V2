@@ -1,14 +1,14 @@
 // RecruitRadar — pages/StudentATS.js
-// ATS Resume Checker page for students.
-//
-// How it works (explainable in viva):
+
+// ATS Resume Checker page 
+
+
 //   1. Student selects a placement drive from the dropdown.
 //   2. Frontend calls POST /api/student/ats-check with { drive_id }.
 //   3. Backend reads the student's uploaded resume PDF using pdfplumber.
 //   4. Backend extracts raw text and checks each required skill (keyword match).
 //   5. Returns match score, matched skills (green), missing skills (red), feedback.
-//
-// Why keyword matching: transparent, no black box, every result is explainable.
+
 
 const StudentATS = {
   name: 'StudentATS',

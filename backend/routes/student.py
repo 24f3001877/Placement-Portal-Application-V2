@@ -43,9 +43,9 @@ def _allowed_file(filename: str) -> bool:
     return "." in filename and filename.rsplit(".", 1)[1].lower() in allowed
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # PROFILE
-# ─────────────────────────────────────────────────────────────────────────────
+
 @student_bp.route("/profile", methods=["GET"])
 @jwt_required()
 def get_profile():
@@ -130,9 +130,9 @@ def download_resume(filename):
     return send_from_directory(upload_folder, filename, as_attachment=True)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # PLACEMENT DRIVES
-# ─────────────────────────────────────────────────────────────────────────────
+
 @student_bp.route("/drives", methods=["GET"])
 @jwt_required()
 def list_drives():
@@ -232,9 +232,8 @@ def get_drive(drive_id):
     return jsonify(data), 200
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # APPLICATIONS
-# ─────────────────────────────────────────────────────────────────────────────
+
 @student_bp.route("/drives/<int:drive_id>/apply", methods=["POST"])
 @jwt_required()
 def apply(drive_id):
@@ -264,7 +263,7 @@ def apply(drive_id):
     if existing:
         return jsonify({"error": "You have already applied to this drive."}), 409
 
-    # ── Eligibility validation ────────────────────────────────────────────────
+    # ── Eligibility validation 
     if drive.min_cgpa and student.cgpa < drive.min_cgpa:
         return jsonify({
             "error": f"Your CGPA ({student.cgpa}) does not meet the minimum requirement ({drive.min_cgpa})."
@@ -372,9 +371,9 @@ def download_offer_letter(placement_id):
     return send_from_directory(upload_folder, placement.offer_letter_path, as_attachment=True)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # CSV EXPORT (async via Celery)
-# ─────────────────────────────────────────────────────────────────────────────
+
 @student_bp.route("/export", methods=["POST"])
 @jwt_required()
 def export_csv():
@@ -432,9 +431,9 @@ def download_csv(filename):
     return send_from_directory(upload_folder, filename, as_attachment=True)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # ATS RESUME CHECKER
-# ─────────────────────────────────────────────────────────────────────────────
+
 @student_bp.route("/ats-check", methods=["POST"])
 @jwt_required()
 def ats_check():
@@ -487,7 +486,7 @@ def ats_check():
     if drive.status != "approved":
         return jsonify({"error": "You can only check against approved drives."}), 400
 
-    # ── Step 1: Extract text from resume PDF ──────────────────────────────────
+    # ── Step 1: Extract text from resume PDF
     upload_folder = current_app.config["UPLOAD_FOLDER"]
     resume_path = os.path.join(upload_folder, student.resume_path)
 
@@ -509,7 +508,7 @@ def ats_check():
     if not resume_text:
         return jsonify({"error": "Resume appears to be empty or is a scanned image PDF. Please upload a text-based PDF."}), 400
 
-    # ── Step 2: Build skills list from drive ──────────────────────────────────
+    # ── Step 2: Build skills list from drive 
     # skills_required is stored as comma-separated e.g. "Python, SQL, Django, REST APIs"
     if not drive.skills_required:
         return jsonify({
@@ -524,7 +523,7 @@ def ats_check():
 
     raw_skills = [s.strip() for s in drive.skills_required.split(",") if s.strip()]
 
-    # ── Step 3: Match each skill against resume text ──────────────────────────
+    # ── Step 3: Match each skill against resume text 
     # Simple case-insensitive substring check.
     # e.g. "REST APIs" → check if "rest apis" appears anywhere in resume text.
     matched = []
@@ -537,11 +536,11 @@ def ats_check():
         else:
             missing.append(skill)
 
-    # ── Step 4: Calculate match score ────────────────────────────────────────
+    # ── Step 4: Calculate match score 
     total = len(raw_skills)
     match_score = round((len(matched) / total) * 100, 1) if total > 0 else 100.0
 
-    # ── Step 5: Generate feedback message ────────────────────────────────────
+    # ── Step 5: Generate feedback message 
     if match_score == 100:
         feedback = "Excellent! Your resume matches all required skills for this drive."
     elif match_score >= 75:

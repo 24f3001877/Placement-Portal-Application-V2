@@ -31,7 +31,7 @@ def register():
     email = data.get("email", "").strip().lower()
     password = data.get("password", "")
 
-    # ── Input validation ──────────────────────────────────────────────────────
+    # ── Input validation 
     if role not in ("student", "company"):
         return jsonify({"error": "Role must be 'student' or 'company'."}), 400
     if not email:
@@ -47,13 +47,13 @@ def register():
     if User.query.filter_by(email=email).first():
         return jsonify({"error": "An account with this email already exists."}), 409
 
-    # ── Create User ───────────────────────────────────────────────────────────
+    # ── Create User 
     user = User(email=email, role=role)
     user.set_password(password)
     db.session.add(user)
     db.session.flush()  # Get user.id before committing
 
-    # ── Create role-specific profile ──────────────────────────────────────────
+    # ── Create role-specific profile 
     if role == "student":
         full_name = data.get("full_name", "").strip()
         branch = data.get("branch", "").strip()

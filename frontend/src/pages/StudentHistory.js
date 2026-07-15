@@ -1,4 +1,5 @@
 // RecruitRadar — pages/StudentHistory.js
+
 const StudentHistory = {
   name: 'StudentHistory',
   template: `

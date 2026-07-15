@@ -18,9 +18,9 @@ def _require_admin():
     return None
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # DASHBOARD STATS
-# ─────────────────────────────────────────────────────────────────────────────
+
 @admin_bp.route("/dashboard", methods=["GET"])
 @jwt_required()
 def dashboard():
@@ -60,9 +60,8 @@ def dashboard():
     return jsonify(result), 200
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # COMPANY MANAGEMENT
-# ─────────────────────────────────────────────────────────────────────────────
+
 @admin_bp.route("/companies", methods=["GET"])
 @jwt_required()
 def list_companies():
@@ -174,9 +173,9 @@ def delete_company(company_id):
     return jsonify({"message": f"{name} removed from the system."}), 200
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # STUDENT MANAGEMENT
-# ─────────────────────────────────────────────────────────────────────────────
+
 @admin_bp.route("/students", methods=["GET"])
 @jwt_required()
 def list_students():
@@ -266,9 +265,9 @@ def get_student(student_id):
     return jsonify(data), 200
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # PLACEMENT DRIVE MANAGEMENT
-# ─────────────────────────────────────────────────────────────────────────────
+
 @admin_bp.route("/drives", methods=["GET"])
 @jwt_required()
 def list_drives():
@@ -335,9 +334,9 @@ def delete_drive(drive_id):
     return jsonify({"message": f"Drive '{title}' deleted."}), 200
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # ALL APPLICATIONS VIEW
-# ─────────────────────────────────────────────────────────────────────────────
+
 @admin_bp.route("/applications", methods=["GET"])
 @jwt_required()
 def list_all_applications():
